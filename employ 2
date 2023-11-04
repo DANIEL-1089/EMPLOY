@@ -1,0 +1,99 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <wchar.h>
+#include <Windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <string.h>
+#include <stdlib.h>
+#include <cstring>
+#include <conio.h>
+#include <iomanip>
+#include <process.h>
+
+
+
+using namespace std;
+const int LEN = 80;
+
+class employee {
+private:
+    char name[LEN];
+    unsigned long number;
+public:
+    void getdata() {
+        cout << "Enter a last name: ";cin >> name;
+        cout << "Enter a number: ";cin >> number;
+    }
+    void putdata() const {
+        cout << "\n  Last name: " << name;
+        cout << "\n  Number: " << number;
+    }
+};
+class manager : public employee {
+private:
+    char title[LEN];
+    double dues;
+public:
+    void getdata() {
+        employee::getdata();
+        cout << "\n Enter the position: ";cin >> title;
+        cout << "\n Enter the amount of contributions to the golf club: ";cin >> dues;
+    }
+    void putdata() const {
+        employee::putdata();
+        cout << "\n  position: " << title;
+        cout << "\n  the amount of contributions to the golf club: " << dues;
+    }
+};
+class scients : public employee {
+private:
+    int pubs;
+public:
+    void getdata() {
+        employee::getdata();
+        cout << "  Enter the number of publications: "; cin >> pubs;
+    }
+    void putdata() const {
+        cout << "\n  number of publications:  " << pubs;
+    }
+};
+class laborer : public employee {
+};
+class foreman : public laborer {
+private:
+    float quotas;
+public:
+    void getdata() {
+        laborer::getdata();
+        cout << " Enter the production rate: ";cin >> quotas;
+    }
+    void putdata() const {
+        laborer::putdata();
+        cout << "\n Standard" << quotas;
+    }
+};
+
+
+
+int main()
+{
+    laborer l1;
+    foreman f1;
+
+    cout << endl;
+    cout << "\nEntering information about the first worker";
+    l1.getdata();
+    cout << "\nEntering information about the first foreman";
+    f1.getdata();
+
+    cout << endl;
+    cout << "info about the first worker";
+    l1.putdata();
+    cout << "info about the first foreman";
+    f1.putdata();
+
+    return 0;
+}
